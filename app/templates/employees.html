@@ -6,202 +6,199 @@
     <title>Employees Table</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Lora:wght@400;500&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Lora', serif;
-            background: #f0f4f8;
-            color: #333;
-            line-height: 1.6;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-        }
-        h1 {
-            font-family: 'Poppins', sans-serif;
-            color: #34495e;
-            text-align: center;
-            margin-top: 40px;
-            font-weight: 600;
-            font-size: 2.2em;
-        }
-        table {
-            margin-top: 20px;
-            width: 90%;
-            max-width: 1000px;
-            background-color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
-            border-collapse: separate;
-            border-spacing: 0;
-            table-layout: fixed;
-        }
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid #e0e0e0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        th {
-            background-color: #16a085;
-            color: #ffffff;
-            text-align: center;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-        tr:hover {
-            background-color: #d1f2eb;
-            transition: background-color 0.3s ease;
-        }
-        td:first-child, th:first-child {
-            padding-left: 20px;
-            width: 8%;
-        }
-        td:nth-child(2), th:nth-child(2),
-        td:nth-child(3), th:nth-child(3),
-        td:nth-child(4), th:nth-child(4),
-        td:last-child, th:last-child {
-            width: 23%;
-        }
-        td:last-child, th:last-child {
-            padding-right: 20px;
-        }
-        td {
-            text-align:center;
-            font-family: 'Lora', serif;
-            font-size: 0.95em;
-            color: #2c3e50;
-        }
+<style>
+    body {
+        font-family: 'Lora', serif;
+        background: #f0f4f8;
+        color: #333;
+        line-height: 1.6;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+    }
+    h1 {
+        font-family: 'Poppins', sans-serif;
+        color: #34495e;
+        text-align: center;
+        margin-top: 40px;
+        font-weight: 600;
+        font-size: 2.2em;
+    }
+    table {
+        margin-top: 20px;
+        width: 90%;
+        max-width: 1000px;
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        border-collapse: separate;
+        border-spacing: 0;
+        table-layout: fixed;
+    }
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #e0e0e0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    th {
+        background-color: #16a085;
+        color: #ffffff;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    tr:hover {
+        background-color: #d1f2eb;
+        transition: background-color 0.3s ease;
+    }
+    td:first-child, th:first-child {
+        padding-left: 20px;
+        width: 8%;
+    }
+    td:nth-child(2), th:nth-child(2),
+    td:nth-child(3), th:nth-child(3),
+    td:nth-child(4), th:nth-child(4),
+    td:last-child, th:last-child {
+        width: 23%;
+    }
+    td:last-child, th:last-child {
+        padding-right: 20px;
+    }
+    td {
+        text-align:center;
+        font-family: 'Lora', serif;
+        font-size: 0.95em;
+        color: #2c3e50;
+    }
 
-        .employee-btn-container {
-            width: 90%;
-            display: flex;
-            justify-content:end;
-            max-width: 1000px;
-        }
-        .add-employee-btn {
-            background-color: #ffffff; /* White background */
-            box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-            color: #16a085; /* Color for the plus icon */
-            font-size: 1.5em; /* Size of the plus icon */
-            width: 50px; /* Square button */
-            height: 50px; /* Square button */
-            border-radius: 10px; /* Rounded corners */
-            display: flex;
-            justify-content: center;
-            border:none;
-            align-items: center;
-            cursor: pointer;
-        }
-              .employee-form {
-            display: none;
-            width: 90%;
-            max-width: 1000px;
-            background-color: #fff;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
-            margin: 20px auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+    .employee-btn-container {
+        width: 90%;
+        display: flex;
+        justify-content:end;
+        max-width: 1000px;
+    }
+    .add-employee-btn {
+        background-color: #ffffff; /* White background */
+        box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+        color: #16a085; /* Color for the plus icon */
+        font-size: 1.5em; /* Size of the plus icon */
+        width: 50px; /* Square button */
+        height: 50px; /* Square button */
+        border-radius: 10px; /* Rounded corners */
+        display: flex;
+        justify-content: center;
+        border:none;
+        align-items: center;
+        cursor: pointer;
+    }
+          .employee-form {
+        display: none;
+        width: 90%;
+        max-width: 1000px;
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        margin: 20px auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
 
-        .employee-form h2 {
-            font-family: 'Poppins', sans-serif;
-            color: #34495e;
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-weight: 600;
-            font-size: 1.5em;
-        }
+    .employee-form h2 {
+        font-family: 'Poppins', sans-serif;
+        color: #34495e;
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-weight: 600;
+        font-size: 1.5em;
+    }
 
-        #addEmployeeForm {
-            display: flex;
-            flex-direction: column;
-        }
+    #addEmployeeForm {
+        display: flex;
+        flex-direction: column;
+    }
 
-        #addEmployeeForm input,
-        #addEmployeeForm select {
-            font-family: 'Lora', serif;
-            font-size: 0.95em;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
+    #addEmployeeForm input,
+    #addEmployeeForm select {
+        font-family: 'Lora', serif;
+        font-size: 0.95em;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #e0e0e0;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
 
-        #addEmployeeForm input:focus,
-        #addEmployeeForm select:focus {
-            outline: none;
-            border-color: #16a085;
-            box-shadow: 0 0 0 2px rgba(22, 160, 133, 0.2);
-        }
+    #addEmployeeForm input:focus,
+    #addEmployeeForm select:focus {
+        outline: none;
+        border-color: #16a085;
+        box-shadow: 0 0 0 2px rgba(22, 160, 133, 0.2);
+    }
 
-        #addEmployeeForm button {
-            font-family: 'Poppins', sans-serif;
-            background-color: #16a085;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
+    #addEmployeeForm button {
+        font-family: 'Poppins', sans-serif;
+        background-color: #16a085;
+        color: white;
+        border: none;
+        padding: 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
 
-        #addEmployeeForm button:hover {
-            background-color: #1abc9c;
-        }
+    #addEmployeeForm button:hover {
+        background-color: #1abc9c;
+    }
 
-        .delete-icon {
-            cursor: pointer;
-            color: #e74c3c;
-            font-size: 1.2em;
-        }
+    .delete-icon {
+        cursor: pointer;
+        color: #e74c3c;
+        font-size: 1.2em;
+    }
 
-        .delete-icon:hover {
-            color: #c0392b;
-        }
+    .delete-icon:hover {
+        color: #c0392b;
+    }
 
-        /* Update the toggle button styles */
-        .add-employee-btn {
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
+    /* Update the toggle button styles */
+    .add-employee-btn {
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
 
-        .add-employee-btn:hover {
-            transform: scale(1.1);
-            background-color: #f0f0f0;
-        }
+    .add-employee-btn:hover {
+        transform: scale(1.1);
+        background-color: #f0f0f0;
+    }
 
-        .add-employee-btn.active {
-            transform: rotate(45deg);
-            background-color: #e74c3c;
-            color: white;
-        }
+    .add-employee-btn.active {
+        transform: rotate(45deg);
+        background-color: #e74c3c;
+        color: white;
+    }
 
-    </style>
+</style>
+
 </head>
 <body>
-    <h1>
-        Employees Directory
-    </h1>
+    <h1>Employees Directory</h1>
     <div title="Add Employee" class="employee-btn-container">
-        <button class="add-employee-btn" onclick="toggleForm()">
-           +
-        </button>
+        <button class="add-employee-btn" onclick="toggleForm()">+</button>
     </div>
 
     <div id="employeeForm" class="employee-form">
@@ -210,9 +207,7 @@
             <input type="text" id="name" placeholder="Name" required>
             <input type="email" id="email" placeholder="Email" required>
             <select id="department" required>
-                {% for department in departments %}
-                <option value="{{ department.id }}">{{ department.name }}</option>
-                {% endfor %}
+                <!-- We'll populate this dynamically -->
             </select>
             <button type="submit">Add Employee</button>
         </form>
@@ -229,23 +224,46 @@
                 <th>Action</th>
             </tr>
         </thead>
-          <tbody>
-            {% for employee in employees %}
-            <tr data-id="{{ employee.id }}">
-                <td>{{ loop.index }}</td>
-                <td>{{ employee.name }}</td>
-                <td>{{ employee.email }}</td>
-                <td>{{ employee.department.name }}</td>
-                <td>{{ employee.department.location }}</td>
-                <td>
-                    <span class="delete-icon" onclick="deleteEmployee({{ employee.id }})">&#x1F5D1;</span>
-                </td>
-            </tr>
-            {% endfor %}
+        <tbody id="employeesTableBody">
+            <!-- We'll populate this dynamically -->
         </tbody>
     </table>
 
     <script>
+        // Global variables to store our data
+        let employees = [];
+        let departments = [];
+
+        // Function to render a single employee row
+        function renderEmployeeRow(employee, index) {
+            return `
+                <tr data-id="${employee.id}">
+                    <td>${index + 1}</td>
+                    <td>${employee.name}</td>
+                    <td>${employee.email}</td>
+                    <td>${employee.department.name}</td>
+                    <td>${employee.department.location}</td>
+                    <td>
+                        <span class="delete-icon" onclick="deleteEmployee(${employee.id})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                        </span>
+                    </td>
+                </tr>
+            `;
+        }
+
+        // Function to render all employees
+        function renderEmployees() {
+            const tableBody = document.getElementById('employeesTableBody');
+            tableBody.innerHTML = employees.map(renderEmployeeRow).join('');
+        }
+
+        // Function to render department options
+        function renderDepartmentOptions() {
+            const select = document.getElementById('department');
+            select.innerHTML = departments.map(dept => `<option value="${dept.id}">${dept.name}</option>`).join('');
+        }
+
         function toggleForm() {
             const form = document.getElementById('employeeForm');
             const btn = document.querySelector('.add-employee-btn');
@@ -259,7 +277,6 @@
                 btn.classList.remove('active');
             }
         }
-
 
         function deleteEmployee(id) {
             if (confirm('Are you sure you want to delete this employee?')) {
@@ -279,7 +296,8 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.data.deleteEmployee.success) {
-                        document.querySelector(`tr[data-id="${id}"]`).remove();
+                        employees = employees.filter(emp => emp.id !== id);
+                        renderEmployees();
                     }
                 });
             }
@@ -315,23 +333,51 @@
             .then(response => response.json())
             .then(data => {
                 const newEmployee = data.data.addEmployee.employee;
-                const table = document.getElementById('employeesTable');
-                const newRow = table.insertRow(-1);
-                newRow.setAttribute('data-id', newEmployee.id);
-                newRow.innerHTML = `
-                    <td>${table.rows.length - 1}</td>
-                    <td>${newEmployee.name}</td>
-                    <td>${newEmployee.email}</td>
-                    <td>${newEmployee.department.name}</td>
-                    <td>${newEmployee.department.location}</td>
-                    <td>
-                        <span class="delete-icon" onclick="deleteEmployee(${newEmployee.id})">&#x1F5D1;</span>
-                    </td>
-                `;
+                employees.push(newEmployee);
+                renderEmployees();
                 document.getElementById('addEmployeeForm').reset();
-                toggleForm(); // Hide the form after adding an employee
+                toggleForm();
             });
         });
+
+        // Initial data fetch
+        function fetchInitialData() {
+            fetch('/graphql', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    query: `
+                        query {
+                            employees {
+                                id
+                                name
+                                email
+                                department {
+                                    id
+                                    name
+                                    location
+                                }
+                            }
+                            departments {
+                                id
+                                name
+                            }
+                        }
+                    `
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                employees = data.data.employees;
+                departments = data.data.departments;
+                renderEmployees();
+                renderDepartmentOptions();
+            });
+        }
+
+        // Call this function when the page loads
+        fetchInitialData();
+
     </script>
 </body>
 </html>

@@ -5,7 +5,7 @@ from sqlalchemy.orm import sessionmaker
 # from app.db.data import employees_data, departments_data
 from app.db.models import Employee, Department
 
-engine = create_engine(DB_URI, echo=True)
+engine = create_engine(DB_URI)
 Session = sessionmaker(bind=engine)
 
 
