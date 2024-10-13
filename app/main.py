@@ -6,11 +6,65 @@ from app.db.database import prepare_database, Session
 from app.gql.queries import Query
 from app.db.models import Employee, Department
 from app.gql.mutations import Mutation
+from fastapi.responses import StreamingResponse
+import csv
+from io import StringIO
 
 
 schema = Schema(query=Query, mutation=Mutation)
 app = FastAPI()
 templates = Jinja2Templates(directory="app/templates")
+
+
+
+@app.get("/download-employees-csv", response_class=StreamingResponse)
+async def download_employees_csv():
+    # Create a string buffer to store the CSV data
+    output = StringIO()
+
+    # Create a CSV writer object
+    writer = csv.writer(output)
+
+    # Write header row
+    writer.writerow(["ID", "Name", "Email", "Department", "Location"])
+
+    # Fetch employee data
+    query = """
+    query {
+        employees {
+            id
+            name
+            email
+            department {
+                name
+                location
+            }
+        }
+    }
+    """
+    result = schema.execute(query)
+    employees = result.data['employees']
+
+    # Write employee data rows
+    for employee in employees:
+        writer.writerow([
+            employee['id'],
+            employee['name'],
+            employee['email'],
+            employee['department']['name'],
+            employee['department']['location']
+        ])
+
+    # Move the cursor to the start of the stream
+    output.seek(0)
+
+    # Return the file as a StreamingResponse with appropriate headers
+    return StreamingResponse(
+        output,
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=employees.csv"}
+    )
+
 
 @app.on_event("startup")
 def startup_event():

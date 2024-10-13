@@ -14,7 +14,6 @@
             display: flex;
             line-height: 1.6;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
             height: 100vh;
         }
@@ -35,14 +34,23 @@
             font-size: 1.2rem;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin: auto;
+        }
+        .head-home {
+            font-family: 'Poppins', sans-serif;
+            color: #34495e;
+            text-align: center;
+            margin-top: 40px;
+            font-weight: 600;
+            font-size: 2.2em;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Employee Management System</h1>
+        <h1 class="head-home">Welcome to Employee Management System</h1>
         <div class="options">
-            <button class="option" onclick="window.location.href='/employees-table'">View Employees</button>
+            <button class="option" onclick="window.location.href='/employees-table'">View Employees table</button>
         </div>
     </div>
 </body>

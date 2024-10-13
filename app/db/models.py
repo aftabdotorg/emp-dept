@@ -26,3 +26,4 @@ class Department(Base):
 
 
 # audit columns - timestamps , created by
+# details
