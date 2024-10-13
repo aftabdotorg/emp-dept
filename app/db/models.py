@@ -23,3 +23,6 @@ class Department(Base):
     name = Column(saString)
     location = Column(saString)
     employees = relationship("Employee", back_populates="department")
+
+
+# audit columns - timestamps , created by

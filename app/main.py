@@ -31,8 +31,9 @@ def get_departments():
     return departments
 
 @app.get("/")
-def test_home():
-    return {"OK" : 200}
+async def get_home(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
 
 
 @app.get("/employees-table")

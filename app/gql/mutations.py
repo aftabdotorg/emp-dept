@@ -1,10 +1,13 @@
 from importlib.metadata import requires
 
 from graphene import Mutation, String, Int, Field, ObjectType, Boolean
-
-from app.db.models import Employee
-from app.gql.types import EmployeeObject
+from app.db.models import Employee, Department
+from app.gql.types import EmployeeObject, DepartmentObject
 from app.db.database import Session
+from sqlalchemy.orm import joinedload
+
+# model to object conversion
+
 
 class AddEmployee(Mutation):
     class Arguments:
@@ -36,7 +39,7 @@ class UpdateEmployee(Mutation):
     def mutate(root, info, employee_id, name=None, email=None, department_id=None):
         session = Session()
 
-        employee = session.query(Employee).filter(Employee.id == employee_id).first()
+        employee = session.query(Employee).options(joinedload(Employee.department)).filter(Employee.id == employee_id).first()
 
         if not employee:
             raise Exception("Employee not found")
@@ -71,6 +74,23 @@ class DeleteEmployee(Mutation):
         session.commit()
         session.close()
         return DeleteEmployee(success=True)
+
+
+class AddDepartment(Mutation):
+    class Arguments:
+        name = String(required=True)
+        location = String(required=True)
+
+    department = Field(lambda: DepartmentObject)
+
+    @staticmethod
+    def mutate(root, info, name, location):
+        session = Session()
+        department = Department(name=name, location=location)
+        session.add(department)
+        session.commit()
+        session.refresh(department)
+        return AddDepartment(department=department)
 
 class Mutation(ObjectType):
     add_employee = AddEmployee.Field()
